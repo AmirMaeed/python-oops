@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python OOP Notes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    header {
+      background: #6200ea;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 1rem;
+    }
+    .note {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    pre {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: 'Fira Code', monospace;
+      position: relative;
+    }
+    button.copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #6200ea;
+      color: white;
+      border: none;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    .dark-mode .note {
+      background: #1e1e1e;
+    }
+    .dark-mode pre {
+      background: #2d2d2d;
+    }
+    .toggle-theme {
+      background: #03dac6;
+      color: #000;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    nav {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      background: #eeeeee;
+      border-radius: 8px;
+    }
+    nav a {
+      margin-right: 1rem;
+      text-decoration: none;
+      color: #6200ea;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Python OOP Notes</h1>
+    <button class="toggle-theme" onclick="toggleTheme()">Toggle Dark Mode</button>
+  </header>
+
+  <div class="container">
+    <nav>
+      <a href="#oop">OOP Concepts</a>
+      <a href="#classes">Classes</a>
+      <a href="#objects">Objects</a>
+      <a href="#inheritance">Inheritance</a>
+      <a href="#inheritance-types">Inheritance Types</a>
+      <a href="#polymorphism">Polymorphism</a>
+      <a href="#encapsulation">Encapsulation</a>
+      <a href="#abstraction">Abstraction</a>
+    </nav>
+
+    <div class="note" id="oop">
+      <h2>Object-Oriented Programming (OOP) Concepts</h2>
+      <p>OOP is a programming paradigm that uses objects and classes to structure code. The core concepts of OOP include:</p>
+      <ul>
+        <li><strong>Classes</strong>: Blueprints for creating objects.</li>
+        <li><strong>Objects</strong>: Instances of classes.</li>
+        <li><strong>Inheritance</strong>: A way to form new classes using existing ones.</li>
+        <li><strong>Polymorphism</strong>: The ability to use a single interface to represent different data types.</li>
+        <li><strong>Encapsulation</strong>: Bundling data and methods that operate on the data within one unit.</li>
+        <li><strong>Abstraction</strong>: Hiding complex implementation details and showing only the necessary parts of an object.</li>
+      </ul>
+    </div>
+
+    <div class="note" id="classes">
+      <h2>Classes</h2>
+      <p>Classes are blueprints for creating objects. They define the properties and methods that the created objects will have.</p>
+      <pre><code>class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def speak(self):
+        return f"{self.name} says Woof!"
+
+dog1 = Dog("Buddy", 3)
+dog2 = Dog("Charlie", 5)
+
+print(dog1.speak())  # Buddy says Woof!
+print(dog2.speak())  # Charlie says Woof!</code><button class="copy-btn" onclick="copyText(this)">Copy</button></pre>
+    </div>
+
+    <div class="note" id="objects">
+      <h2>Objects</h2>
+      <p>Objects are instances of classes. They hold data and can access the methods defined in the class.</p>
+      <pre><code>dog1 = Dog("Buddy", 3)
+dog2 = Dog("Charlie", 5)
+
+# Accessing attributes
+print(dog1.name)  # Buddy
+print(dog2.age)   # 5
+
+# Calling methods
+dog1.speak()  # Buddy says Woof!
+dog2.speak()  # Charlie says Woof!</code><button class="copy-btn" onclick="copyText(this)">Copy</button></pre>
+    </div>
+
+    <div class="note" id="inheritance">
+      <h2>Inheritance</h2>
+      <p>Inheritance allows a class to inherit attributes and methods from another class. This promotes code reuse and makes your code easier to maintain.</p>
+      <pre><code>class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        return "Some sound"
+
+class Dog(Animal):
+    def speak(self):
+        return f"{self.name} says Woof!"
+
+dog = Dog("Buddy")
+print(dog.speak())  # Buddy says Woof!</code><button class="copy-btn" onclick="copyText(this)">Copy</button></pre>
+    </div>
+
+    <div class="note" id="inheritance-types">
+      <h2>Types of Inheritance</h2>
+      <p>In Python, there are several types of inheritance:</p>
+      <ul>
+        <li><strong>Single Inheritance</strong>: A class inherits from a single parent class.</li>
+        <li><strong>Multiple Inheritance</strong>: A class inherits from multiple parent classes.</li>
+        <li><strong>Multilevel Inheritance</strong>: A class inherits from another class, which is itself inherited from another class.</li>
+        <li><strong>Hierarchical Inheritance</strong>: Multiple classes inherit from a single parent class.</li>
+        <li><strong>Hybrid Inheritance</strong>: A combination of more than one type of inheritance.</li>
+      </ul>
+    </div>
+
+    <div class="note" id="polymorphism">
+      <h2>Polymorphism</h2>
+      <p>Polymorphism allows you to use methods in different ways, often through method overriding or method overloading.</p>
+      <pre><code>class Cat(Animal):
+    def speak(self):
+        return f"{self.name} says Meow!"
+
+animals = [Dog("Buddy"), Cat("Whiskers")]
+
+for animal in animals:
+    print(animal.speak())
+
+# Output:
+# Buddy says Woof!
+# Whiskers says Meow!</code><button class="copy-btn" onclick="copyText(this)">Copy</button></pre>
+    </div>
+
+    <div class="note" id="encapsulation">
+      <h2>Encapsulation</h2>
+      <p>Encapsulation is the bundling of data and methods into a single unit, and restricting access to some of the object's components.</p>
+      <pre><code>class Account:
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.__balance = balance  # Private attribute
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def withdraw(self, amount):
+        if amount > self.__balance:
+            return "Insufficient funds"
+        self.__balance -= amount
+
+    def get_balance(self):
+        return self.__balance
+
+acc = Account("John", 1000)
+acc.deposit(500)
+print(acc.get_balance())  # 1500
+acc.withdraw(2000)  # Insufficient funds</code><button class="copy-btn" onclick="copyText(this)">Copy</button></pre>
+    </div>
+
+    <div class="note" id="abstraction">
+      <h2>Abstraction</h2>
+      <p>Abstraction allows you to hide complex implementation details and only expose the necessary parts of an object.</p>
+      <pre><code>from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    @abstractmethod
+    def sound(self):
+        pass
+
+class Dog(Animal):
+    def sound(self):
+        return "Woof!"
+
+dog = Dog()
+print(dog.sound())  # Woof!</code><button class="copy-btn" onclick="copyText(this)">Copy</button></pre>
+    </div>
+  </div>
+
+  <script>
+    function copyText(button) {
+      const code = button.previousElementSibling;
+      const range = document.createRange();
+      range.selectNode(code);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand('copy');
+      window.getSelection().removeAllRanges();
+      alert('Code copied to clipboard!');
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+
+</html>
